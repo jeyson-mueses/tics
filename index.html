@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi primera página con estilo</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Menú de navegación del sitio -->
+    <ul class="navbar">
+      <li><a href="indice.html">Página principal</a></li>
+      <li><a href="meditaciones.html">Meditaciones</a></li>
+      <li><a href="ciudad.html">Mi ciudad</a></li>
+      <li><a href="enlaces.html">Enlaces</a></li>
+    </ul>
+
+    <!-- Contenido principal -->
+    <h1>Mi primera página con estilo</h1>
+
+    <!-- Fecha actual -->
+    <div id="current-date" class="date-display"></div>
+    
+    <!-- Botón de refresh -->
+    <button onclick="location.reload()" class="refresh-btn">Refrescar página</button>
+
+    <!-- Calculadora simple -->
+    <div class="calculator">
+      <h2>Calculadora Simple</h2>
+      <input type="number" id="num1" placeholder="Primer número">
+      <input type="number" id="num2" placeholder="Segundo número">
+      <div class="calculator-buttons">
+        <button onclick="calculate('+')" class="calc-btn">+</button>
+        <button onclick="calculate('-')" class="calc-btn">-</button>
+        <button onclick="calculate('*')" class="calc-btn">×</button>
+        <button onclick="calculate('/')" class="calc-btn">÷</button>
+      </div>
+      <div id="result" class="result">Resultado: </div>
+    </div>
+
+    <p>¡Bienvenido a mi primera página con estilo!</p>
+
+    <p>No tiene imágenes, pero tiene estilo.</p>
+
+    <p>
+      Debería haber más cosas aquí, pero todavía no sé qué escribir. Ideas
+      vendrán, lo puedo sentir, paciencia y tiempo me harán decidir.
+    </p>
+
+    <address>
+      Creada por: <br />
+      Jeyson Mueses
+    </address>
+
+    <script>
+      // Mostrar fecha actual
+      function updateDate() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('es-ES', options);
+      }
+      updateDate();
+
+      // Función de la calculadora
+      function calculate(operator) {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        let result;
+
+        if (isNaN(num1) || isNaN(num2)) {
+          document.getElementById('result').textContent = 'Por favor, ingrese números válidos';
+          return;
+        }
+
+        switch(operator) {
+          case '+':
+            result = num1 + num2;
+            break;
+          case '-':
+            result = num1 - num2;
+            break;
+          case '*':
+            result = num1 * num2;
+            break;
+          case '/':
+            if (num2 === 0) {
+              document.getElementById('result').textContent = 'No se puede dividir por cero';
+              return;
+            }
+            result = num1 / num2;
+            break;
+        }
+
+        document.getElementById('result').textContent = `Resultado: ${result}`;
+      }
+    </script>
+  </body>
+</html>
